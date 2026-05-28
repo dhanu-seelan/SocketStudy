@@ -96,10 +96,13 @@ c.close()
 ```
 
 ##output
+
+
 ##Client side Result
 
 
 <img width="477" height="71" alt="image" src="https://github.com/user-attachments/assets/93e52698-4a43-4aa2-8c6f-f3980b533501" />
+
 
 ##Server side result
 
