@@ -56,6 +56,15 @@ Socket programming finds applications in various domains, including web developm
 ##code
 ## Client Side
 ```import socket
+s=socket.socket()
+s.connect(('localhost',8000))
+print(s.getsockname())
+print(s.recv(1024).decode())
+s.send("acknowledgement recived from the server".encode())
+```
+
+
+```import socket
 from datetime import datetime
 s=socket.socket()
 s.bind(('localhost',8000))
@@ -72,18 +81,29 @@ c.close()
 
 ##Server side
 ```import socket
+from datetime import datetime
 s=socket.socket()
-s.connect(('localhost',8000))
-print(s.getsockname())
-print(s.recv(1024).decode())
-s.send("acknowledgement recived from the server".encode())
+s.bind(('localhost',8000))
+s.listen(5)
+c,addr=s.accept()
+print("Client Address : ",addr)
+now = datetime.now()
+c.send(now.strftime("%d/%m/%Y %H:%M:%S").encode())
+ack=c.recv(1024).decode()
+if ack:
+print(ack)
+c.close()
 ```
 
 ##output
 ##Client side Result
+
+
 <img width="477" height="71" alt="image" src="https://github.com/user-attachments/assets/93e52698-4a43-4aa2-8c6f-f3980b533501" />
 
 ##Server side result
+
+
 <img width="269" height="102" alt="image" src="https://github.com/user-attachments/assets/ceacb577-28e7-4493-b2b9-e3633929d683" />
 
 
